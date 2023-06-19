@@ -50,6 +50,10 @@ gracz.atak()
 print()
 
 """
+klasa strategiaAtaku jest abstrakcyjną klasą, która definiuje ogólny interfejs dla różnych strategii ataku.  Konkretne strategie (klasy atakOgniem, atakLodem, atakPiorunem): Są to konkretne implementacje strategii ataku. Każda strategia reprezentuje inny rodzaj ataku (ogniem, lodem, piorunem), więc każda strategia jest inna. Klasa Gracz reprezentuje obiekt, który korzysta z różnych strategii ataku. Posiada pole rodzajAtaku, które przechowuje obiekt strategii. Metoda atak w tej klasie wywołuje metodę atak na obiekcie strategii, realizując odpowiedni atak.
+"""
+#####################################################################################################################################################
+"""
 2.Polecenie:
 Wzorzec Polecenia pozwala zamienić żądanie w samodzielny obiekt. Wzorzec ten umożliwia parametryzację klientów (obiektów wydających polecenia) różnymi żądaniami, umożliwia kolejkowanie i rejestrowanie żądań oraz obsługę operacji odłożonych w czasie.
 """
@@ -96,6 +100,12 @@ for polecenie in polecenia:
 print()
 
 """
+Klasa polecenie jest abstrakcyjną klasą, która definiuje ogólny nterfejs dla różnych poleceń. W tym przypadku zawiera jedną metodę wykonaj, która będzie implementowana przez konkretne polecenia.
+Konkretne polecenia (klasy wstaw i usun): Są to konkretne implementacje poleceń. Każda z tych klas dziedziczy po klasie polecenie i implementuje metodę wykonaj na różne sposoby.
+Klasa edytor reprezentuje obiekt, na którym wykonywane są operacje. W tym przypadku, klasa edytor przechowuje tekst i udostępnia metody wstaw_tekst i usun_tekst do manipulacji tekstem.
+"""
+#####################################################################################################################################################
+"""
 3.Metoda Szablonowa:
 Wzorzec Metody Szablonowej definiuje ogólny szkielet algorytmu,pozostawia, więc konkretne implementacje poszczególnych operacji do podklas. Pozwala to na modyfikowanie niektórych, poszczególnych kroków algorytmu,zachowując przy tym strukturę ogólną.
 """
@@ -141,28 +151,27 @@ class herbata(napoj):
 
 napojKawa = kawa()
 napojKawa.przygotuj()
-"""
-Gotowanie wody
-Parzenie kawy
-Nalewanie do filiżanki
-Dodawanie mleka
-"""
 
 print()
 
 napojHerbata = herbata()
 napojHerbata.przygotuj()
+
+
 """
-Gotowanie wody
-Parzenie herbaty
-Nalewanie do filiżanki
-Dodawanie cytryny
+Klasa napoj jest klasą abstrakcyjną, która definiuje szablonową metodę przygotuj(). Ta metoda określa ogólny algorytm przygotowywania napoju, składający się z kroków: zagotowanie wody, parzenie, nalewanie do filiżanki i dodawanie składników. Niektóre z tych kroków są zdefiniowane jako puste metody, które zostaną zaimplementowane w klasach dziedziczących.
+Klasy pochodne kawa i herbata: Są to konkretne implementacje napojów. Dziedziczą one po klasie bazowej napoj i dostarczają implementacje konkretnych kroków takich jak parz() i dodajSkladniki(). Każda z tych klas dostosowuje algorytm ogólny do swoich potrzeb.
+Metoda przygotuj(): Jest to szablonowa metoda, która definiuje ogólny algorytm przygotowania napoju. Wywołuje ona odpowiednie kroki w odpowiedniej kolejności, korzystając z metod zdefiniowanych w klasach pochodnych. Ta metoda jest wspólna dla wszystkich napojów, ale konkretne implementacje poszczególnych kroków mogą się różnić w zależności od napoju.
 """
+#####################################################################################################################################################
 """
 Podobieństwa i różnice między wzorcami:
 
--Wszystkie trzy wzorce projektowe dają możliwosć elastycznego dostosowania zachowań oraz separacji kodu(różnych funkcji)
+-Wszystkie trzy wzorce projektowe dają możliwosć elastycznego dostosowania zachowań oraz separacji kodu(tj. różnych funkcji)
 -Wzorce te pozwalają stworzyć ogólny szkielet algorytmów
--Metoda szablonowa bazuje na mechanizmie dziedziczenia (pozwala zmienić część algorytmu w podklasach), a metoda strategii bazuje na kompozycji- możliwa jest zmiana części zachowania obiektu poprzez nadanie mu różnych strategii, nawet w trakcie działania programu- w przeciwieństwie do metody szablonowej
+-Metoda szablonowa bazuje na mechanizmie dziedziczenia (pozwala zmienić część algorytmu w podklasach), a metoda strategii bazuje na kompozycji- możliwa jest zmiana części zachowania obiektu poprzez nadanie mu różnych strategii, nawet w trakcie działania programu- w przeciwieństwie do metody szablonowej. Natomiast metoda polecenia polega na umieszczeniu różnych poleceń, zadań w różne obiekty.
+-Metoda strategii tak samo jak metoda polecenia umożliwia zmianę algorytmu w czasie jego wykonywania, bez zmiany struktury
+
+-Podsumowująć wszystkie te metody dają możliwość elastycznego dostosowywania zachowań programu zależnie od potrzeby, ale realizują to założnie na różne sposoby, choć można znaleźć pomiędzy nimi pewne podobieństwa.
 
 """
